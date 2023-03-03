@@ -1,3 +1,4 @@
+import os
 try:
     from setuptools import setup
 except ImportError:
@@ -5,12 +6,12 @@ except ImportError:
 
 # Dynamically calculate the version
 version_tuple = __import__('rest_hooks').VERSION
-version = '.'.join([str(v) for v in version_tuple])
+version = '.'.join([str(v) for v in version_tuple]) + '+sl.1'
 
 setup(
     name = 'django-rest-hooks',
     description = 'A powerful mechanism for sending real time API notifications via a new subscription model.',
-    version = version,
+    version = os.environ.get('VERSION', version),
     author = 'Bryan Helmig',
     author_email = 'bryan@zapier.com',
     url = 'http://github.com/zapier/django-rest-hooks',
